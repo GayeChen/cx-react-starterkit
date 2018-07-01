@@ -18,13 +18,13 @@ program
 program
   .usage('<command>')
 
-program
-  .command('add')
-  .description('Add a template')
-  .alias('a')
-  .action(() => {
-    cmAdd()
-  })
+// program
+//   .command('add')
+//   .description('Add a template')
+//   .alias('a')
+//   .action(() => {
+//     cmAdd()
+//   })
 
 program
   .command('list')
