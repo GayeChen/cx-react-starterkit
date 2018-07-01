@@ -3,5 +3,4 @@
 
 ####
 
-![https://raw.githubusercontent.com/GayeChen/cx-react-starterkit/master/images/cli.png]
-
+![命令行](https://raw.githubusercontent.com/GayeChen/cx-react-starterkit/master/images/cli.png)
