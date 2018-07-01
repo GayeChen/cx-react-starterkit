@@ -7,33 +7,51 @@ const chalk = require('chalk')
 const config = require('../templates')
 // const list = require('./list')
 
+const list = () => {
+  console.log('Templates available:')
+  config.tpls.map((tpl, i) => {
+    console.log(
+    '  ' + chalk.green(i) +
+    '  ' + chalk.white(':') +
+    '  ' + chalk.green(tpl.name)
+    )
+  })
+}
+
 module.exports = (tplName) => {
+  // console.log(chalk.white(tplName))
   co(function *() {
-    if(!tplName) {
-      console.log('Templates available:')
-      if(!config.tpls || config.tpls.length === 0) {
-        console.log(chalk.yellow('There is no any template! '));
-        process.exit()
-      }
-      config.tpls.map((tpl, i) => {
-        console.log(
-        '  ' + chalk.green(i) +
-        '  ' + chalk.white(':') +
-        '  ' + chalk.green(tpl.name)
-        )
-      })
-    }
-    tplName = yield prompt('Template No : ')
-    const projectName = yield prompt('Project name: ')
     let gitUrl
+    let tplInd
     let branch
-    // list()
-    if(!config.tpls[tplName]) {
-      console.log(chalk.red('\n × Template does not exit!'));
+    if(!config.tpls || config.tpls.length === 0) {
+      console.log(chalk.yellow('There is no any template! '));
       process.exit()
     }
-    gitUrl = config.tpls[tplName].url
-    branch = config.tpls[tplName].branch
+    
+    if(!tplName || Object.prototype.toString.call(tplName) === '[object Object]') {
+      list()
+      tplInd = yield prompt('Template No : ')
+      if(!config.tpls[tplInd]) {
+        console.log(chalk.red('× The emplate does not exit!'));
+        process.exit()
+      }
+    } else {
+      tplInd = config.tpls.findIndex(tpl => tpl.name == tplName)
+      if(tplInd < 0) {
+        console.log(chalk.red('× The emplate does not exit!'));
+        list()
+        tplInd = yield prompt('Template No : ')
+        if(!config.tpls[tplInd]) {
+          console.log(chalk.red('× The emplate does not exit!'));
+          process.exit()
+        }
+      }
+    }
+    const projectName = yield prompt('Project name: ')
+  
+    gitUrl = config.tpls[tplInd].url
+    branch = config.tpls[tplInd].branch
     
     const cmdStr = `git clone ${gitUrl} ${projectName} && cd ${projectName} && git checkout ${branch}`
     console.log(chalk.white('\n Project is generating...'))

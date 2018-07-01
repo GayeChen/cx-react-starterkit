@@ -38,8 +38,8 @@ program
   .command('init')
   .description('Generate a new project')
   .alias('i')
-  .action(() => {
-    cmInit()
+  .action((name) => {
+    cmInit(name)
   })
 
 program
