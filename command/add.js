@@ -11,11 +11,13 @@ module.exports = () => {
     const tplName = yield prompt('Template name: ')
     const gitUrl = yield prompt('Git https link: ')
     const branch = yield prompt('Branch: ')
+    let curIndex = config.tpls.length
     
-    if(!config.tpl[tplName]) {
-      config.tpl[tplName] = {}
-      config.tpl[tplName]['url'] = gitUrl.replace(/[\u0000-\u0019]/g, '')
-      config.tpl[tplName]['branch'] = branch
+    if(!curIndex || config.tpls.findIndex(tpl => tpl.name === tplName) < 0) {
+      config.tpls[curIndex] = {}
+      config.tpls[curIndex]['name'] = tplName
+      config.tpls[curIndex]['url'] = gitUrl.replace(/[\u0000-\u0019]/g, '')
+      config.tpls[curIndex]['branch'] = branch
     } else {
       console.log(chalk.red('The template has already existed!'))
       process.exit()

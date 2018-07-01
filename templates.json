@@ -1,8 +1,10 @@
 {
-  "tpl": {
-    "redux-app": {
+  "tpls": [
+    {
+      "name": "redux-app",
       "url": "https://github.com/GayeChen/react-app-template.git",
-      "branch": "master"
+      "branch": "master",
+      "desc": "quick start a react app with react-redux"
     }
-  }
+  ]
 }

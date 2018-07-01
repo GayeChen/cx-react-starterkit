@@ -5,19 +5,35 @@ const co = require('co')
 const prompt = require('co-prompt')
 const chalk = require('chalk')
 const config = require('../templates')
+// const list = require('./list')
 
-module.exports = () => {
+module.exports = (tplName) => {
   co(function *() {
-    const tplName = yield prompt('Template name: ')
+    if(!tplName) {
+      console.log('Templates available:')
+      if(!config.tpls || config.tpls.length === 0) {
+        console.log(chalk.yellow('There is no any template! '));
+        process.exit()
+      }
+      config.tpls.map((tpl, i) => {
+        console.log(
+        '  ' + chalk.green(i) +
+        '  ' + chalk.white(':') +
+        '  ' + chalk.green(tpl.name)
+        )
+      })
+    }
+    tplName = yield prompt('Template No : ')
     const projectName = yield prompt('Project name: ')
     let gitUrl
     let branch
-    if(!config.tpl[tplName]) {
+    // list()
+    if(!config.tpls[tplName]) {
       console.log(chalk.red('\n × Template does not exit!'));
       process.exit()
     }
-    gitUrl = config.tpl[tplName].url
-    branch = config.tpl[tplName].branch
+    gitUrl = config.tpls[tplName].url
+    branch = config.tpls[tplName].branch
     
     const cmdStr = `git clone ${gitUrl} ${projectName} && cd ${projectName} && git checkout ${branch}`
     console.log(chalk.white('\n Project is generating...'))

@@ -8,9 +8,11 @@ const config = require('../templates')
 
 module.exports = () => {
   co(function *() {
+    let tpls = config.tpls
     let tplName = yield prompt('Template name: ')
-    if(config.tpl[tplName]) {
-      config.tpl[tplName] = undefined
+    let tarIndex = tpls.findIndex(tpl => tpl.name === tplName)
+    if(tpls[tarIndex] >= 0) {
+      config.tpls = tpls.filter(tpl => tpl.name !== tplName)
     } else {
       console.log(chalk.red('The template does not exist!'))
       process.exit()
