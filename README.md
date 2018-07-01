@@ -3,5 +3,5 @@
 
 ####
 
-![./images/cli.png]
+![https://raw.githubusercontent.com/GayeChen/cx-react-starterkit/master/images/cli.png]
 
