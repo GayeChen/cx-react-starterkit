@@ -1,6 +1,6 @@
 {
   "tpl": {
-    "redux-app-template": {
+    "redux-app": {
       "url": "https://github.com/GayeChen/react-app-template.git",
       "branch": "master"
     }

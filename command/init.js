@@ -12,12 +12,12 @@ module.exports = () => {
     const projectName = yield prompt('Project name: ')
     let gitUrl
     let branch
-    if(!config[tplName]) {
+    if(!config.tpl[tplName]) {
       console.log(chalk.red('\n × Template does not exit!'));
       process.exit()
     }
-    gitUrl = config[tplName].url
-    branch = config[tplName].branch
+    gitUrl = config.tpl[tplName].url
+    branch = config.tpl[tplName].branch
     
     const cmdStr = `git clone ${gitUrl} ${projectName} && cd ${projectName} && git checkout ${branch}`
     console.log(chalk.white('\n Project is generating...'))
