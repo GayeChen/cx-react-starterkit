@@ -1,10 +1,1 @@
-{
-  "tpls": [
-    {
-      "name": "redux-app",
-      "url": "https://github.com/GayeChen/react-app-template.git",
-      "branch": "master",
-      "desc": "quick start a react app with react-redux"
-    }
-  ]
-}
+{"tpls":[{"name":"redux-app","url":"https://github.com/GayeChen/react-app-template.git","branch":"master","desc":"quick start a react app with react-redux"},{"name":"react-boilerplate","url":"https://github.com/GayeChen/react-boilerplate.git","branch":"master"}]}

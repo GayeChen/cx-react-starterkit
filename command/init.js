@@ -53,7 +53,7 @@ module.exports = (tplName) => {
     gitUrl = config.tpls[tplInd].url
     branch = config.tpls[tplInd].branch
     
-    const cmdStr = `git clone ${gitUrl} ${projectName} && cd ${projectName} && git checkout ${branch}`
+    const cmdStr = `git clone --depth=1 ${gitUrl} ${projectName} && cd ${projectName} && git checkout ${branch}`
     console.log(chalk.white('\n Project is generating...'))
     
     exec(cmdStr, (err, stdout, stderr) => {
