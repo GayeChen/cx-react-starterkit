@@ -1,6 +1,6 @@
 {
   "name": "cx-react-starterkit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a cli tool for create react app",
   "main": "index.js",
   "repository": "https://github.com/GayeChen/cx-react-starterkit.git",
