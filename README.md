@@ -12,8 +12,6 @@
     - redux-saga
     - ...
 
- *从学习的角度不推荐官方的create-react-app*
-
 ## 快速开始
 
 使用 npm 或者 yarn 全局安装，或者直接使用 [npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b)
